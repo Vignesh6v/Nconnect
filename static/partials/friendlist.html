@@ -5,12 +5,12 @@
 		<ul id="frindlist">
 		    <li class="friend-repeat" ng-repeat="friend in friends | filter:q as results" ng-class-odd="'odd'" ng-class-even="'even'">
 		    	<p class="uppercase"><strong> {{friend.name}} </strong>
-		      <div align = "right"><input type="submit" class= "page-scroll btn btn-md" name="frequest" ng-click ="submit(buildingdetails)" value="Accept"/>
-		      <input type="submit" class= "page-scroll btn btn-md" name="frequest" ng-click ="submit(buildingdetails)" value="Decline"/>
+		      <div align = "right"><input type="submit" class= "page-scroll btn btn-md" name="frequest" ng-click ="approve(friend.userid)" value="Accept"/>
+		      <input type="submit" class= "page-scroll btn btn-md" name="frequest" ng-click ="reject(friend.userid)" value="Decline"/>
 		      </div></p>
 		    </li>
 		    <li class="friend-repeat" ng-if="results.length == 0">
-		      <strong>No results found...</strong>
+		      <strong>----Empty----</strong>
 		    </li>
 	  	</ul>
 </div>
@@ -23,7 +23,7 @@
 		    	<p class="uppercase"><strong> {{req.name}} </strong>
 		    </li>
 		    <li class="friend-repeat" ng-if="results2.length == 0">
-		      <strong>No results found...</strong>
+		      <strong>----Empty----</strong>
 		    </li>
 	  	</ul>
 </div>
@@ -37,7 +37,7 @@
 		    	<div align = "right"><input type="submit" class= "page-scroll btn btn-md" name="frequest" ng-click ="frequest(frnd.userid)" value="Send Request"/>
 		    </li>
 		    <li class="friend-repeat" ng-if="results3.length == 0">
-		      <strong>No results found...</strong>
+		      <strong>----Empty----</strong>
 		    </li>
 	  	</ul>
 </div>

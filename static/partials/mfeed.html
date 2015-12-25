@@ -1,16 +1,12 @@
 <div class="clearfix">
-  <form ng-Submit="post()">
+   <form class="form" ng-submit="newposts()">
     <h4>{{current_user}} says</h4>
     <textarea required class="form-control" maxlength="200" rows="1" placeholder="Subject" ng-model="newPost.subject"></textarea>
     <textarea required class="form-control" maxlength="200" rows="3" placeholder="Say something" ng-model="newPost.text"></textarea>
-    <ui-select multiple ng-model="multipleDemo.colors" theme="select2" ng-disabled="disabled" style="width: 300px;">
-    <ui-select-match placeholder="Select colors...">{{$item}}</ui-select-match>
-      <ui-select-choices repeat="color in availableColors | filter:$select.search">
-      {{color}}
-      </ui-select-choices>
-    </ui-select>
-  <input class="btn submit-btn pull-right" type="submit" value="Post!" />
-  </form> <br><br><br>
+    <button type="submit" class="btn btn-default pull-right">Post !</button>
+  </form> 
+  <br><br><br>
+  <form>
   	<div role="tabpanel">
           <!-- Nav tabs -->
                   <ul class="nav nav-tabs" role="tablist">
@@ -28,5 +24,6 @@
       <small>Posted @{{post.datetime}}</small>
       <small class="pull-right"><a href= "#/detail/{{post.postid}}"> more details</small>
     </div>
-</div>
+  </div>
+</form>
 </div>

@@ -36,7 +36,11 @@ myApp.config(function ($routeProvider) {
     })
     .when("/profile", {
       templateUrl: "static/partials/profile.html",
-      controller: "profileController"
+      controller: "myCtrl"
+    })
+    .when("/newblock", {
+      templateUrl: "static/partials/newblock.html",
+      controller: "newblockController"
     })
     .when("/map", {
       templateUrl: "static/partials/map.html",
@@ -49,6 +53,10 @@ myApp.config(function ($routeProvider) {
     .when("/nfeed", {
       templateUrl: "static/partials/nfeed.html",
       controller: "neighborController"
+    })
+    .when("/blockreqlist", {
+      templateUrl: "static/partials/blockreqlist.html",
+      controller: "blockreqlistController"
     })
     .when("/affeed", {
       templateUrl: "static/partials/affeed.html",
