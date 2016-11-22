@@ -32,7 +32,7 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-@app.route('/import', methods= ['POST']) 
+@app.route('/import', methods= ['POST'])
 def upload_file():
     if request.method == 'POST':
         file = request.files['file']
@@ -75,7 +75,7 @@ def login():
             row = cursor.fetchone()
             if row:
 	            epass = row[0]
-	            ok = pwd_context.verify(_pass, epass) 
+	            ok = pwd_context.verify(_pass, epass)
 	            if ok:
 	                status = True
 	                return jsonify({'message':'Login Successfull','code':'200','result': status, 'user': req})
@@ -308,17 +308,17 @@ def pending(username):
 	posts ={}
 	status = 0
 	print "testsssss"
-	query1 = ("select userid , concat (first_name,' ',last_name) from users where userid in (select userone  from frndrequest where usertwo = %s and status = %s and fromid != %s union select usertwo from FrndRequest where userone = %s and status = %s and fromid != %s) ") 
+	query1 = ("select userid , concat (first_name,' ',last_name) from users where userid in (select userone  from frndrequest where usertwo = %s and status = %s and fromid != %s union select usertwo from FrndRequest where userone = %s and status = %s and fromid != %s) ")
 	cursor.execute(query1,(uid,status,uid,uid,status,uid))
 	posts['pending'] = [dict(userid=row[0], name=row[1]) for row in cursor.fetchall()]
-	query2 = ("select userid , concat (first_name,' ',last_name) from users where userid in (select userone  from frndrequest where usertwo = %s and status = %s and fromid = %s union select usertwo from FrndRequest where userone = %s and status = %s and fromid = %s)") 
+	query2 = ("select userid , concat (first_name,' ',last_name) from users where userid in (select userone  from frndrequest where usertwo = %s and status = %s and fromid = %s union select usertwo from FrndRequest where userone = %s and status = %s and fromid = %s)")
 	cursor.execute(query2,(uid,status,uid,uid,status,uid))
 	posts['requested'] = [dict(userid=row[0], name=row[1]) for row in cursor.fetchall()]
 	query3 = ("select userid,concat(first_name ,last_name) from users where userid NOT IN (select userone from frndrequest where usertwo = %s union select usertwo from frndrequest where userone = %s) and userid!= %s")
 	cursor.execute(query3,(uid,uid,uid))
 	posts['tobesent'] = [dict(userid=row[0], name=row[1]) for row in cursor.fetchall()]
 	b = posts.get('tobesent')
-	s = posts.get('pending') 
+	s = posts.get('pending')
 	v = posts.get('requested')
 	if bool(s) or bool(v) or bool(b):
 		posts['status'] = "Success"
@@ -691,7 +691,7 @@ def displayprofile(username):
 	posts={}
 	userid = getuserid(username)
 	print userid
-	query = ("select description,interest,dob from userdetails where userid=%s and userid = %s") 
+	query = ("select description,interest,dob from userdetails where userid=%s and userid = %s")
 	cursor.execute(query,(userid,userid))
 	posts['items'] = [dict( description=row[0],interest=row[1],dob = str(row[2])) for row in cursor.fetchall()]
 	conn.close()
